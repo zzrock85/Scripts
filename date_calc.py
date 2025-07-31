@@ -1,4 +1,4 @@
-rom datetime import datetime
+from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 default_date = datetime.today().strftime('%Y-%m-%d')
