@@ -47,7 +47,10 @@ def diff_date():
     print(f"Days: {days}")
     # Calculating weeks and days
     weeks = total_days // 7
-    print(f"\nTotal number of weeks: {weeks:,} and {days} days")
+    if days == 1:
+        print(f"\nTotal number of weeks: {weeks:,} and {days} day")
+    else:
+        print(f"\nTotal number of weeks: {weeks:,} and {days} days")
     print(f"Total number of days: {total_days:,}")
 
 def add_subtract():
