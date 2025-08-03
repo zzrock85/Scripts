@@ -1,10 +1,13 @@
 #!/bin/bash
+# This script performs an automatic update of the system and logs the output.
 
-echo "Automatic update" | tee -a update.log
-date >> update.log
-echo "apt update" | tee -a update.log
-apt update >> update.log 2>&1
-echo "apt upgrade" | tee -a update.log
-apt upgrade -y >> update.log 2>&1
-echo "Script execution completed successfully." | tee -a update.log
+LOGFILE="/var/log/update.log"
+
+echo "Automatic update" | tee -a "$LOGFILE"
+date >> "$LOGFILE"
+echo "apt update" | tee -a "$LOGFILE"
+apt update >> "$LOGFILE" 2>&1
+echo "apt upgrade" | tee -a "$LOGFILE"
+apt upgrade -y >> "$LOGFILE" 2>&1
+echo "Script execution completed successfully." | tee -a "$LOGFILE"
 reboot
