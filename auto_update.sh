@@ -9,5 +9,7 @@ echo "apt update" | tee -a "$LOGFILE"
 apt update >> "$LOGFILE" 2>&1
 echo "apt upgrade" | tee -a "$LOGFILE"
 apt upgrade -y >> "$LOGFILE" 2>&1
+echo "apt autoremove" | tee -a "$LOGFILE"
+apt autoremove -y >> "$LOGFILE" 2>&1
 echo "Script execution completed successfully." | tee -a "$LOGFILE"
 reboot
