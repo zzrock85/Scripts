@@ -3,7 +3,7 @@
 
 LOGFILE="/var/log/update.log"
 
-echo "Automatic update" | tee -a "$LOGFILE"
+echo "Automatic update" | tee "$LOGFILE"
 date >> "$LOGFILE"
 echo "apt update" | tee -a "$LOGFILE"
 apt update >> "$LOGFILE" 2>&1
