@@ -23,4 +23,9 @@ if [ -f /var/run/reboot-required ]; then
     reboot
 else
     echo "No reboot required." | tee -a "$LOGFILE"
+    # Reboot on Sundays even if not required
+    if [ "$(date +%u)" -eq 7 ]; then
+        echo "Today is Sunday. Rebooting system as scheduled." | tee -a "$LOGFILE"
+        reboot
+    fi
 fi
