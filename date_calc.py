@@ -19,7 +19,7 @@ def show_menu():
         if choice == "1":
             diff_date()
         elif choice == "2":
-            add_subtract()
+            add_subtract_menu()
         elif choice == "3":
             print("See you!")
             break
@@ -60,7 +60,7 @@ def diff_date():
         print(f"\nTotal number of weeks: {weeks:,} and {days} days")
     print(f"Total number of days: {total_days:,}")
 
-def add_subtract():
+def add_subtract_menu():
     """
     Menu for adding or subtracting years, months, and days from a date.
     """
