@@ -1,9 +1,13 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
+# Set the default date to today in YYYY-MM-DD format
 default_date = datetime.today().strftime('%Y-%m-%d')
 
 def show_menu():
+    """
+    Display the main menu and handle user selection.
+    """
     while True:
         print("\n--- Date calculation ---")
         print("1. Difference between dates")
@@ -23,6 +27,9 @@ def show_menu():
             print("Invalid selection. Please try again.")
 
 def diff_date():
+    """
+    Calculate and display the difference between two dates.
+    """
     first_date = input(f"Enter the first date in the format YYYY-MM-DD [{default_date}]:") or default_date
     second_date = input("Enter the second date in the format YYYY-MM-DD: ")
     try:
@@ -54,6 +61,9 @@ def diff_date():
     print(f"Total number of days: {total_days:,}")
 
 def add_subtract():
+    """
+    Menu for adding or subtracting years, months, and days from a date.
+    """
     while True:
         print("1. Add")
         print("2. Subtract")
@@ -69,6 +79,9 @@ def add_subtract():
             print("Invalid selection. Please try again.")
 
 def date_add_subtract(choice):
+    """
+    Add or subtract years, months, and days from a given date.
+    """
     first_date = input(f"Enter the date in the format YYYY-MM-DD [{default_date}]:") or default_date
     start_date = datetime.strptime(first_date, "%Y-%m-%d").date()
     print("Please enter what you want to add or subtracr")
@@ -85,4 +98,5 @@ def date_add_subtract(choice):
     print(f"\nOld date: {start_date}")
     print(f"New date: {new_date}\n")
 
+# Start the program by showing the menu
 show_menu()
