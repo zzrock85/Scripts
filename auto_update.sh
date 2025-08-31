@@ -3,6 +3,15 @@
 
 LOGFILE="/var/log/update.log"
 
+check_reboot() {
+    if [ "$(date +%u)" -eq 7 ]; then # 7 corresponds to Sunday
+        echo "Today is Sunday. Rebooting system as scheduled." | tee -a "$LOGFILE"
+        reboot
+    else
+        echo "No reboot required." | tee -a "$LOGFILE"
+    fi
+}
+
 echo "Automatic update" | tee "$LOGFILE"
 date >> "$LOGFILE"
 echo "apt update" | tee -a "$LOGFILE"
@@ -11,6 +20,7 @@ echo "Checking for available updates..." | tee -a "$LOGFILE"
 UPDATES=$(apt list --upgradable 2>/dev/null | grep -v "Listing..." | wc -l)
 if [ "$UPDATES" -eq 0 ]; then
     echo "No updates available. Exiting." | tee -a "$LOGFILE"
+    check_reboot
     exit 0
 fi
 echo "apt upgrade" | tee -a "$LOGFILE"
@@ -22,10 +32,6 @@ if [ -f /var/run/reboot-required ]; then
     echo "Reboot required. Rebooting now." | tee -a "$LOGFILE"
     reboot
 else
-    echo "No reboot required." | tee -a "$LOGFILE"
-    # Reboot on Sundays even if not required
-    if [ "$(date +%u)" -eq 7 ]; then
-        echo "Today is Sunday. Rebooting system as scheduled." | tee -a "$LOGFILE"
-        reboot
-    fi
+    check_reboot
+    exit 0
 fi
