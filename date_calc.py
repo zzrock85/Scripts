@@ -68,6 +68,7 @@ def add_subtract_menu():
         print("1. Add")
         print("2. Subtract")
         print("3. Back to main menu")
+        print("4. Exit")
 
         choice = input("Select an option: ")
 
@@ -75,6 +76,9 @@ def add_subtract_menu():
             date_add_subtract(choice)
         elif choice == "3":
             return
+        elif choice == "4":
+            print("See you!")
+            exit()
         else:
             print("Invalid selection. Please try again.")
 
