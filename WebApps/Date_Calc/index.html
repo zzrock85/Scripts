@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator różnicy dat</title>
+    <style>
+        body { font-family: Arial; max-width: 400px; margin: 40px auto; }
+        input { margin: 10px 0; padding: 6px; width: 100%; }
+        button { padding: 10px; width: 100%; margin-top: 10px; }
+        #wynik { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Kalkulator różnicy między datami</h2>
+
+    <label>Data 1:</label>
+    <input type="datetime-local" id="data1">
+
+    <label>Data 2:</label>
+    <input type="datetime-local" id="data2">
+
+    <button onclick="oblicz()">Oblicz różnicę</button>
+
+    <div id="wynik"></div>
+
+    <script>
+        function oblicz() {
+            const d1 = new Date(document.getElementById("data1").value);
+            const d2 = new Date(document.getElementById("data2").value);
+
+            if (isNaN(d1) || isNaN(d2)) {
+                document.getElementById("wynik").innerText = "Wybierz obie daty.";
+                return;
+            }
+
+            let roznicaMs = Math.abs(d2 - d1);
+
+            const dni = Math.floor(roznicaMs / (1000 * 60 * 60 * 24));
+            roznicaMs -= dni * 1000 * 60 * 60 * 24;
+
+            const godziny = Math.floor(roznicaMs / (1000 * 60 * 60));
+            roznicaMs -= godziny * 1000 * 60 * 60;
+
+            const minuty = Math.floor(roznicaMs / (1000 * 60));
+
+            document.getElementById("wynik").innerText =
+                `Różnica: ${dni} dni, ${godziny} godzin, ${minuty} minut`;
+        }
+    </script>
+
+</body>
+</html>
