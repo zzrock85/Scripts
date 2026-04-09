@@ -15,10 +15,10 @@
     <h2>Kalkulator różnicy między datami</h2>
 
     <label>Data 1:</label>
-    <input type="datetime-local" id="data1">
+    <input type="date" id="data1">
 
     <label>Data 2:</label>
-    <input type="datetime-local" id="data2">
+    <input type="date" id="data2">
 
     <button onclick="oblicz()">Oblicz różnicę</button>
 
@@ -34,18 +34,11 @@
                 return;
             }
 
-            let roznicaMs = Math.abs(d2 - d1);
-
+            const roznicaMs = Math.abs(d2 - d1);
             const dni = Math.floor(roznicaMs / (1000 * 60 * 60 * 24));
-            roznicaMs -= dni * 1000 * 60 * 60 * 24;
-
-            const godziny = Math.floor(roznicaMs / (1000 * 60 * 60));
-            roznicaMs -= godziny * 1000 * 60 * 60;
-
-            const minuty = Math.floor(roznicaMs / (1000 * 60));
 
             document.getElementById("wynik").innerText =
-                `Różnica: ${dni} dni, ${godziny} godzin, ${minuty} minut`;
+                `Różnica: ${dni} dni`;
         }
     </script>
 
